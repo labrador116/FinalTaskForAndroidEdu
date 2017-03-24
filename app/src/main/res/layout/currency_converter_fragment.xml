@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <Spinner
+        android:id="@+id/first_choice_currency_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:minWidth="@dimen/width_value_for_currency_spinner"
+        />
+
+    <EditText
+        android:id="@+id/first_sum_currency_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:width="@dimen/width_value_for_currency_text_view"
+        android:hint="Sum"
+        />
+
+    <Spinner
+        android:id="@+id/second_choice_currency_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="@dimen/width_value_for_currency_spinner"
+        android:layout_gravity="center"
+        />
+
+    <EditText
+        android:id="@+id/second_sum_currency_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:width="@dimen/width_value_for_currency_text_view"
+        android:hint="Sum"
+        />
+
+    <Button
+        android:id="@+id/get_convert_sum_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:width="@dimen/width_value_for_convert_button"
+        android:text="@string/name_for_conver_button"/>
+</LinearLayout>

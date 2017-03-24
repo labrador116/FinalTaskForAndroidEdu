@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="width_value_for_currency_text_view">150dp</dimen>
+    <dimen name="width_value_for_currency_spinner">100dp</dimen>
+    <dimen name="width_value_for_convert_button">150dp</dimen>
+</resources>
