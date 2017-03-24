@@ -19,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
-//ToDo добавить провайдер в манифест
-//ToDo Создать Модель
-//ToDo Создать Курсор wrapper
+
 //ToDo Connection
 
