@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 
 public class CurrencyOperationLoader extends AsyncTaskLoader<ArrayList<Currency>> {
-
+    
     public CurrencyOperationLoader(Context context) {
         super(context);
     }

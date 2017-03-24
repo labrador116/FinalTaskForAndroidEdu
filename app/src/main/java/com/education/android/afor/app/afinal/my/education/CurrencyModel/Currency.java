@@ -1,9 +1,21 @@
 package com.education.android.afor.app.afinal.my.education.CurrencyModel;
 
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
+
+@Root(name = "Valute")
 public class Currency {
+
+    @Element (name = "Name")
     private String mCurrencyName;
+
+    @Element (name = "CharCode")
     private String mCurrencyCharCode;
+
+    @Element(name = "Nominal")
     private int mNominal;
+
+    @Element(name = "Value")
     private double mValue;
 
     public String getCurrencyName() {
