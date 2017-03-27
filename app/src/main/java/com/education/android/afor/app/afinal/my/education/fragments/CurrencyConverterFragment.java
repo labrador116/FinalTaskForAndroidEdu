@@ -9,14 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.education.android.afor.app.afinal.my.education.CurrencyModel.Container.CurrencyContainer;
 import com.education.android.afor.app.afinal.my.education.CurrencyModel.Currency;
-import com.education.android.afor.app.afinal.my.education.loaders.CurrencyOperationLoader;
+import com.education.android.afor.app.afinal.my.education.loaders.DownloadCurrencyLoader;
 import com.education.android.afor.app.afinal.my.finalappforandroideducatiom.R;
 
 import java.util.ArrayList;
 
 
-public class CurrencyConverterFragment extends Fragment implements LoaderManager.LoaderCallbacks<ArrayList<Currency>> {
+public class CurrencyConverterFragment extends Fragment implements LoaderManager.LoaderCallbacks<CurrencyContainer> {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,17 +36,17 @@ public class CurrencyConverterFragment extends Fragment implements LoaderManager
 
 
     @Override
-    public Loader<ArrayList<Currency>> onCreateLoader(int id, Bundle args) {
-        return new CurrencyOperationLoader(getActivity());
+    public Loader<CurrencyContainer> onCreateLoader(int id, Bundle args) {
+        return new DownloadCurrencyLoader(getActivity());
     }
 
     @Override
-    public void onLoadFinished(Loader<ArrayList<Currency>> loader, ArrayList<Currency> data) {
-        //Забираем данные
+    public void onLoadFinished(Loader<CurrencyContainer> loader, CurrencyContainer data) {
+        //ToDO send in BD with CursorLoader
     }
 
     @Override
-    public void onLoaderReset(Loader<ArrayList<Currency>> loader) {
+    public void onLoaderReset(Loader<CurrencyContainer> loader) {
 
     }
 }

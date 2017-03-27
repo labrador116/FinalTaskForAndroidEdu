@@ -16,7 +16,7 @@ public class Currency {
     private int mNominal;
 
     @Element(name = "Value")
-    private double mValue;
+    private String mValue;
 
     public String getCurrencyName() {
         return mCurrencyName;
@@ -42,11 +42,11 @@ public class Currency {
         mNominal = nominal;
     }
 
-    public double getValue() {
+    public String getValue() {
         return mValue;
     }
 
-    public void setValue(double value) {
+    public void setValue(String value) {
         mValue = value;
     }
 }

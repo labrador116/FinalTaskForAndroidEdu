@@ -21,7 +21,7 @@ public class DataBaseConverterCursorWrapper extends CursorWrapper {
         String CurrencyName = getString(getColumnIndex(Columns.CURRENCY_NAME));
         String CurrencyCharCode = getString(getColumnIndex(Columns.CURRENCY_CHARCODE));
         int Nominal = getInt(getColumnIndex(Columns.NOMINAL));
-        double Value = getDouble(getColumnIndex(Columns.VALUE));
+        String Value = getString(getColumnIndex(Columns.VALUE));
 
         Currency currency = new Currency();
         currency.setCurrencyName(CurrencyName);
