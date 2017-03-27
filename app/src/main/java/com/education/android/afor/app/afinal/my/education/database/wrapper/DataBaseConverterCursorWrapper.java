@@ -4,6 +4,7 @@ package com.education.android.afor.app.afinal.my.education.database.wrapper;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 
+import com.education.android.afor.app.afinal.my.education.CurrencyModel.Container.CurrencyContainer;
 import com.education.android.afor.app.afinal.my.education.CurrencyModel.Currency;
 import com.education.android.afor.app.afinal.my.education.database.DataBaseConverterScheme.ConverterTable.Columns;
 
@@ -13,6 +14,7 @@ public class DataBaseConverterCursorWrapper extends CursorWrapper {
      *
      * @param cursor The underlying cursor to wrap.
      */
+    Cursor mCursor;
     public DataBaseConverterCursorWrapper(Cursor cursor) {
         super(cursor);
     }
@@ -31,5 +33,6 @@ public class DataBaseConverterCursorWrapper extends CursorWrapper {
 
         return currency;
     }
+
 
 }

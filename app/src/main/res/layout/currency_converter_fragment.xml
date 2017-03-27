@@ -9,8 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:minWidth="@dimen/width_value_for_currency_spinner"
-        />
+        android:minWidth="@dimen/width_value_for_currency_spinner" />
 
     <EditText
         android:id="@+id/first_sum_currency_textView"

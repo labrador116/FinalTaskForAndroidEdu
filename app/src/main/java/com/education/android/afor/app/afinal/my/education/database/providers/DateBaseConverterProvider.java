@@ -23,7 +23,7 @@ public class DateBaseConverterProvider extends ContentProvider {
     static{
         sMatcher = new UriMatcher(UriMatcher.NO_MATCH);
         sMatcher.addURI(AUTHORITY, DataBaseConverterScheme.ConverterTable.NAME, 1);
-        sMatcher.addURI(AUTHORITY, DataBaseConverterScheme.ConverterTable.NAME+"/#", 2);
+        sMatcher.addURI(AUTHORITY, DataBaseConverterScheme.ConverterTable.NAME+"/*", 2);
     }
 
     @Override
@@ -94,12 +94,12 @@ public class DateBaseConverterProvider extends ContentProvider {
 
         switch (sMatcher.match(uri)){
             case 1:
-                mDatabase.update(Columns.CURRENCY_CHARCODE,values,selection,selectionArgs);
+                mDatabase.update(DataBaseConverterScheme.ConverterTable.NAME,values,selection,selectionArgs);
                 break;
             case 2:
                 selection = Columns.CURRENCY_CHARCODE+" =?";
                 selectionArgs= new String[]{uri.getLastPathSegment()};
-                mDatabase.update(Columns.CURRENCY_CHARCODE,values,selection,selectionArgs);
+                mDatabase.update(DataBaseConverterScheme.ConverterTable.NAME,values,selection,selectionArgs);
                 break;
             default:
                 throw new IllegalArgumentException("Update is not supported for " + uri);
