@@ -35,7 +35,9 @@ import java.util.List;
 public class CurrencyConverterFragment extends Fragment implements LoaderManager.LoaderCallbacks<CurrencyContainer>{
 
     public static final String URI_ADDRESS = "content://com.education.android.afor.app.afinal.my.education.database.provider/" + DataBaseConverterScheme.ConverterTable.NAME;
-
+    private static final String FIRST_SPINNER_ITEM ="first_spinner_item";
+    private static final String SECOND_SPINNER_ITEM ="second_spinner_item";
+    private static final String ITEMS_ADAPTER ="adapter";
     private CurrencyContainer mCurrencyContainer;
     private Uri mUri;
     private List<String> mCharCodeItemForAdapter;
@@ -47,6 +49,9 @@ public class CurrencyConverterFragment extends Fragment implements LoaderManager
     private QueryServices mServices;
     private String mSelectedFirstItem;
     private String mSelectedSecondItem;
+    private int mFirstSpinnerItemPosition;
+    private int mSecondSpinnerItemPosition;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,6 +79,11 @@ public class CurrencyConverterFragment extends Fragment implements LoaderManager
         mSecondEditText = (EditText) view. findViewById(R.id.second_sum_currency_editText);
         mGetConvertButton = (Button) view.findViewById(R.id.get_convert_sum_button);
 
+        if (savedInstanceState!=null){
+            mFirstSpinnerItemPosition= savedInstanceState.getInt(FIRST_SPINNER_ITEM);
+            mSecondSpinnerItemPosition= savedInstanceState.getInt(SECOND_SPINNER_ITEM);
+        }
+
 
       if(isOnline()==false) {
            mCharCodeItemForAdapter= new ArrayList<>();
@@ -91,7 +101,8 @@ public class CurrencyConverterFragment extends Fragment implements LoaderManager
       mFirstSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
           @Override
           public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            mSelectedFirstItem =mCharCodeItemForAdapter.get(position);
+              mFirstSpinnerItemPosition=position;
+              mSelectedFirstItem =mCharCodeItemForAdapter.get(position);
           }
 
           @Override
@@ -103,6 +114,7 @@ public class CurrencyConverterFragment extends Fragment implements LoaderManager
         mSecondSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mSecondSpinnerItemPosition=position;
                 mSelectedSecondItem = mCharCodeItemForAdapter.get(position);
             }
 
@@ -159,8 +171,12 @@ public class CurrencyConverterFragment extends Fragment implements LoaderManager
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, mCharCodeItemForAdapter);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         mFirstSpinner.setAdapter(adapter);
         mSecondSpinner.setAdapter(adapter);
+        mFirstSpinner.setSelection(mFirstSpinnerItemPosition);
+        mSecondSpinner.setSelection(mSecondSpinnerItemPosition);
+
         Toast.makeText(getContext(), "Данные обновлены!",Toast.LENGTH_SHORT).show();
     }
 
@@ -169,6 +185,12 @@ public class CurrencyConverterFragment extends Fragment implements LoaderManager
 
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(FIRST_SPINNER_ITEM, mFirstSpinnerItemPosition);
+        outState.putInt(SECOND_SPINNER_ITEM, mSecondSpinnerItemPosition);
+    }
 
     private static ContentValues getContentValues (Currency currency){
         ContentValues values = new ContentValues();
@@ -187,6 +209,4 @@ public class CurrencyConverterFragment extends Fragment implements LoaderManager
 
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
-
-
 }
