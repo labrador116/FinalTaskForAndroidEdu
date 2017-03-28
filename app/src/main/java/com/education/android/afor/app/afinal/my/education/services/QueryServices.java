@@ -2,7 +2,6 @@ package com.education.android.afor.app.afinal.my.education.services;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
@@ -10,6 +9,7 @@ import com.education.android.afor.app.afinal.my.education.CurrencyModel.Containe
 import com.education.android.afor.app.afinal.my.education.CurrencyModel.Currency;
 import com.education.android.afor.app.afinal.my.education.database.DataBaseConverterHelper;
 import com.education.android.afor.app.afinal.my.education.database.DataBaseConverterScheme;
+import com.education.android.afor.app.afinal.my.education.database.DataBaseConverterScheme.ConverterTable.Columns;
 import com.education.android.afor.app.afinal.my.education.database.wrapper.DataBaseConverterCursorWrapper;
 
 import java.util.ArrayList;
@@ -41,7 +41,7 @@ public class QueryServices {
         finally {
             cursor.close();
         }
-        container.setmCurrency(currencies);
+        container.setCurrency(currencies);
 
         return container;
     }
@@ -67,6 +67,28 @@ public class QueryServices {
     private DataBaseConverterCursorWrapper queryCurrencies(){
       Cursor cursor = mContext.getContentResolver().query(Uri.parse(URI_ADDRESS),null,null,null,null);
 
+        return new DataBaseConverterCursorWrapper(cursor);
+    }
+
+    public Currency getCurrency (String charCode){
+        DataBaseConverterCursorWrapper cursor = queryCurrency(charCode);
+        Currency currency = new Currency();
+        try {
+            cursor.moveToFirst();
+
+            while(!cursor.isAfterLast()){
+                currency = cursor.getCurrency();
+                cursor.moveToNext();
+            }
+        }
+        finally {
+            cursor.close();
+        }
+        return currency;
+    }
+
+    private DataBaseConverterCursorWrapper queryCurrency(String charCode){
+        Cursor cursor = mContext.getContentResolver().query(Uri.parse(URI_ADDRESS+"/"+charCode),null, Columns.CURRENCY_CHARCODE,new String[]{charCode},null);
         return new DataBaseConverterCursorWrapper(cursor);
     }
 }

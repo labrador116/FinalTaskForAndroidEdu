@@ -12,9 +12,10 @@
         android:minWidth="@dimen/width_value_for_currency_spinner" />
 
     <EditText
-        android:id="@+id/first_sum_currency_textView"
+        android:id="@+id/first_sum_currency_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
         android:layout_gravity="center"
         android:width="@dimen/width_value_for_currency_text_view"
         android:hint="Sum"
@@ -29,9 +30,10 @@
         />
 
     <EditText
-        android:id="@+id/second_sum_currency_textView"
+        android:id="@+id/second_sum_currency_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
         android:layout_gravity="center"
         android:width="@dimen/width_value_for_currency_text_view"
         android:hint="Sum"

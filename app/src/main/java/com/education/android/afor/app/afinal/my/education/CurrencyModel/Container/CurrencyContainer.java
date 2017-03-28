@@ -2,7 +2,6 @@ package com.education.android.afor.app.afinal.my.education.CurrencyModel.Contain
 
 import com.education.android.afor.app.afinal.my.education.CurrencyModel.Currency;
 
-import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
@@ -18,11 +17,11 @@ public class CurrencyContainer {
         mCurrency = new ArrayList<>();
     }
 
-    public List<Currency> getmCurrency() {
+    public List<Currency> getCurrency() {
         return mCurrency;
     }
 
-    public void setmCurrency(List<Currency> mCurrency) {
+    public void setCurrency(List<Currency> mCurrency) {
         this.mCurrency = mCurrency;
     }
 }

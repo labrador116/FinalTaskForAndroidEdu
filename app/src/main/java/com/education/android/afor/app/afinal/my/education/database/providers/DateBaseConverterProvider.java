@@ -42,8 +42,7 @@ public class DateBaseConverterProvider extends ContentProvider {
                 selectionArgs = null;
                 break;
             case 2:
-                selection = Columns.CURRENCY_CHARCODE+" =?";
-                selectionArgs= new String[]{uri.getLastPathSegment()};
+                selection +=" =?";
                 break;
             default:
                 throw new IllegalArgumentException("Cannot query unknown URI " + uri);
@@ -104,7 +103,6 @@ public class DateBaseConverterProvider extends ContentProvider {
             default:
                 throw new IllegalArgumentException("Update is not supported for " + uri);
         }
-
 
         return 0;
     }

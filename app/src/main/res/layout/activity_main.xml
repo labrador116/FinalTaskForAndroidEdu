@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.education.android.afor.app.afinal.my.finalappforandroideducatiom.com.education.android.afor.app.afinal.my.education.MainActivity">
+    tools:context="com.education.android.afor.app.afinal.my.education.MainActivity">
 
   <RelativeLayout
       android:id="@+id/container_for_currency_converter_fragment"

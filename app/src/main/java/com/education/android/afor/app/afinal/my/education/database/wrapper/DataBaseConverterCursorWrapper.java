@@ -4,7 +4,6 @@ package com.education.android.afor.app.afinal.my.education.database.wrapper;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 
-import com.education.android.afor.app.afinal.my.education.CurrencyModel.Container.CurrencyContainer;
 import com.education.android.afor.app.afinal.my.education.CurrencyModel.Currency;
 import com.education.android.afor.app.afinal.my.education.database.DataBaseConverterScheme.ConverterTable.Columns;
 
@@ -23,7 +22,14 @@ public class DataBaseConverterCursorWrapper extends CursorWrapper {
         String CurrencyName = getString(getColumnIndex(Columns.CURRENCY_NAME));
         String CurrencyCharCode = getString(getColumnIndex(Columns.CURRENCY_CHARCODE));
         int Nominal = getInt(getColumnIndex(Columns.NOMINAL));
-        String Value = getString(getColumnIndex(Columns.VALUE));
+
+        String Value;
+        if(getString(getColumnIndex(Columns.VALUE)).contains(",")){
+            Value = getString(getColumnIndex(Columns.VALUE)).replace(',','.');
+        }
+        else {
+             Value = getString(getColumnIndex(Columns.VALUE));
+        }
 
         Currency currency = new Currency();
         currency.setCurrencyName(CurrencyName);
